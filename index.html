@@ -1,79 +1,100 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário de Perguntas</title>
+    <title>Formulário de Sintomas de ISTs</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <h1 class="text-center py-3 mb-0">
-        <i class="fas fa-question-circle mr-2"></i>Formulário de Perguntas
-    </h1>
-
-    <div class="container mt-4">
-        <form id="questionForm">
-            <div class="form-group">
-                <label for="question1">Pergunta 1: Qual é o seu esporte favorito?</label>
-                <select class="form-control" id="question1" name="question1" required>
-                    <option value="" disabled selected>Selecione uma opção</option>
-                    <option value="Futebol">Futebol</option>
-                    <option value="Basquete">Basquete</option>
-                    <option value="Vôlei">Vôlei</option>
-                    <option value="Natação">Natação</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="question2">Pergunta 2: Qual é a sua cor favorita?</label>
-                <select class="form-control" id="question2" name="question2" required>
-                    <option value="" disabled selected>Selecione uma opção</option>
-                    <option value="Vermelho">Vermelho</option>
-                    <option value="Azul">Azul</option>
-                    <option value="Verde">Verde</option>
-                    <option value="Amarelo">Amarelo</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="question3">Pergunta 3: Qual é o seu animal favorito?</label>
-                <select class="form-control" id="question3" name="question3" required>
-                    <option value="" disabled selected>Selecione uma opção</option>
-                    <option value="Cachorro">Cachorro</option>
-                    <option value="Gato">Gato</option>
-                    <option value="Pássaro">Pássaro</option>
-                    <option value="Peixe">Peixe</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="question4">Pergunta 4: Qual é a sua estação do ano favorita?</label>
-                <select class="form-control" id="question4" name="question4" required>
-                    <option value="" disabled selected>Selecione uma opção</option>
-                    <option value="Verão">Verão</option>
-                    <option value="Outono">Outono</option>
-                    <option value="Inverno">Inverno</option>
-                    <option value="Primavera">Primavera</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="question5">Pergunta 5: Qual é a sua comida favorita?</label>
-                <select class="form-control" id="question5" name="question5" required>
-                    <option value="" disabled selected>Selecione uma opção</option>
-                    <option value="Pizza">Pizza</option>
-                    <option value="Hambúrguer">Hambúrguer</option>
-                    <option value="Sushi">Sushi</option>
-                    <option value="Salada">Salada</option>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
-        </form>
+    <h1 class="text-center text-white py-3 mb-0 bg-primary">Formulário de Sintomas de ISTs</h1>
+    <div class="container">
+        <div class="catalog">
+            <form id="symptomsForm">
+                <div class="form-group">
+                    <label>1. Você teve dor ao urinar?</label>
+                    <div>
+                        <label><input type="radio" name="question1" value="Sim" required> Sim</label>
+                        <label><input type="radio" name="question1" value="Não"> Não</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>2. Você teve secreção incomum?</label>
+                    <div>
+                        <label><input type="radio" name="question2" value="Sim" required> Sim</label>
+                        <label><input type="radio" name="question2" value="Não"> Não</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>3. Você teve feridas ou verrugas na área genital?</label>
+                    <div>
+                        <label><input type="radio" name="question3" value="Sim" required> Sim</label>
+                        <label><input type="radio" name="question3" value="Não"> Não</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>4. Você teve coceira ou irritação na área genital?</label>
+                    <div>
+                        <label><input type="radio" name="question4" value="Sim" required> Sim</label>
+                        <label><input type="radio" name="question4" value="Não"> Não</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>5. Você teve dor durante a relação sexual?</label>
+                    <div>
+                        <label><input type="radio" name="question5" value="Sim" required> Sim</label>
+                        <label><input type="radio" name="question5" value="Não"> Não</label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+            <div id="analysisResult" class="mt-4"></div>
+        </div>
     </div>
-
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
+    <script>
+        document.getElementById('symptomsForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(this);
+            const formObject = {};
+            formData.forEach((value, key) => {
+                formObject[key] = value;
+            });
 
+            fetch('http://localhost:3000/api/adicionar-resposta', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formObject)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('Respostas enviadas com sucesso!');
+                exibirAnalise(data.analise);
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        });
+
+        function exibirAnalise(analise) {
+            const analysisResultDiv = document.getElementById('analysisResult');
+            analysisResultDiv.innerHTML = `
+                <div class="card">
+                    <h3>Possível IST e Percentuais</h3>
+                    ${Object.keys(analise).map(ist => {
+                        const { descricao, porcentagem } = analise[ist];
+                        return `<p><strong>${descricao}:</strong> ${porcentagem.toFixed(2)}%</p>`;
+                    }).join('')}
+                </div>
+            `;
+        }
+    </script>
+</body>
 </html>

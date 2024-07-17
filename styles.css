@@ -2,59 +2,52 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #e6ffe6; /* Verde claro */
-  background-image: none; /* Removida a imagem de fundo */
-  color: #fff; /* Branco */
+  background-color: #f0f0f0;
+  background-image: url('https://via.placeholder.com/1920x1080/33cc33/ffffff?text=Formal+Background'); /* Use uma URL válida */
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #000;
 }
 
 h1 {
   text-align: center;
   margin-bottom: 20px;
-  color: #009933; /* Verde escuro */
+  color: #33cc33;
 }
 
-.container {
+.catalog {
   max-width: 600px;
   margin: 50px auto;
-  background-color: rgba(0, 153, 51, 0.8); /* Verde escuro */
+  background-color: rgba(50, 205, 50, 0.8);
   padding: 35px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.form-group {
-  margin-bottom: 20px;
-}
-
-.form-control {
-  background-color: #c2f0c2; /* Verde claro */
-  border: 1px solid #004d00; /* Verde escuro */
-  color: #004d00; /* Verde escuro */
-}
-
-.form-control:focus {
-  background-color: #b3e6b3; /* Verde claro */
-  border-color: #009933; /* Verde escuro */
-  box-shadow: 0 0 0 0.2rem rgba(0, 153, 51, 0.25); /* Verde escuro */
+.form-group label {
+  display: block;
+  color: #fff;
 }
 
 .btn-primary {
-  background-color: #009933; /* Verde escuro */
-  border: none;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  transition: transform 0.2s, box-shadow 0.2s;
+  background-color: #33cc33;
+  border-color: #33cc33;
 }
 
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5);
+.card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-top: 20px;
 }
 
-.btn-primary:focus {
-  outline: none;
-  box-shadow: 0 0 0 0.2rem rgba(0, 153, 51, 0.5); /* Verde escuro */
+.card h3 {
+  margin-top: 0;
+  color: #33cc33;
 }
 
-.text-primary {
-  color: #009933 !important; /* Verde escuro */
+.card p {
+  margin: 5px 0;
+  color: #333;
 }
